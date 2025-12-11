@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE = 'sonar-server'   
+        SONARQUBE = 'sonar-server'
         DOCKER_IMAGE = 'project10-app'
     }
 
@@ -14,15 +14,16 @@ pipeline {
             }
         }
 
-       stage('SonarQube Code Analysis') {
+        stage('SonarQube Code Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    def scannerHome = tool 'sonar-scanner'
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    script {
+                        def scannerHome = tool 'sonar-scanner'
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
-
 
         stage('Build Docker Image') {
             steps {
