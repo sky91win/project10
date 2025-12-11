@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE = 'sonar-server'   // Name you will configure in Jenkins
+        SONARQUBE = 'sonar-server'   
         DOCKER_IMAGE = 'project10-app'
     }
 
@@ -10,7 +10,7 @@ pipeline {
 
         stage('Pull Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/<your-username>/project-10.git'
+                git branch: 'main', url: 'https://github.com/sky91win/project10.git'
             }
         }
 
